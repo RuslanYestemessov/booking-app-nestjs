@@ -35,4 +35,4 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 # .env
-../../tesBookingApp/kolsai-booking-app/.env
+.env
