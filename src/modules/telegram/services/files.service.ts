@@ -7,12 +7,12 @@ export class FilesService {
   constructor(private readonly httpService: HttpService) {
   }
 
-  downloadFile(fileUrl: string, path: string, fileName: string) {
+  downloadFile(fileUrl: string, pathToFile: string) {
     this.httpService.get(fileUrl, {
       responseType: 'stream',
       method: 'GET'
     }).subscribe(value => {
-      value.data.pipe(fs.createWriteStream(`${path}/${fileName}`));
+      value.data.pipe(fs.createWriteStream(pathToFile));
     });
   }
 }
