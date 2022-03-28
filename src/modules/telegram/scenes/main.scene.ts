@@ -1,7 +1,7 @@
 import { Ctx, On, Scene, SceneEnter } from 'nestjs-telegraf';
 import {
   ADMINISTRATION_START_SCENE,
-  BOOK_A_ROOM_SCENE,
+  SELECT_COTTAGE_SCENE,
   MAIN_SCENE,
   VIEW_BOOKED_SCENE
 } from '../constants/scenes.const';
@@ -51,7 +51,7 @@ export class MainScene {
     const text = getMessageText(ctx);
     switch (text) {
       case BOOK_A_ROOM:
-        await ctx.scene.enter(BOOK_A_ROOM_SCENE);
+        await ctx.scene.enter(SELECT_COTTAGE_SCENE);
         break;
       case VIEW_BOOKED:
         await ctx.scene.enter(VIEW_BOOKED_SCENE);
@@ -60,7 +60,12 @@ export class MainScene {
         await ctx.scene.reenter();
         break;
       case ADMINISTRATION:
-        await ctx.scene.enter(ADMINISTRATION_START_SCENE, ctx.scene.state);
+        const user = await this.userService.getOneByTelegramId(getUserId(ctx));
+        if (user.role === 'admin') {
+          await ctx.scene.enter(ADMINISTRATION_START_SCENE);
+        } else {
+          await ctx.reply('У Вас недостаточно прав для администрирования')
+        }
         break;
       default:
         await ctx.reply(SELECT_AN_ACTION);

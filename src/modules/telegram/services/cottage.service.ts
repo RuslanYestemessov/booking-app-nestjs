@@ -25,11 +25,8 @@ export class CottageService {
     return this.cottageModel.find({ bookedByUser });
   }
 
-  addCottage(cottageDto: CottageInterface) {
-    const newCottage = new this.cottageModel({
-      description: cottageDto.description,
-      photos: cottageDto.photos
-    });
+  addCottage({ description, photos, guests }: CottageInterface) {
+    const newCottage = new this.cottageModel({ description, photos, guests });
     return newCottage.save();
   }
 

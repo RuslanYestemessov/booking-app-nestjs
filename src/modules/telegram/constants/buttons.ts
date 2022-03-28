@@ -11,6 +11,7 @@ export const EDIT_COTTAGES = 'Редактировать коттеджи';
 export const ADD_NEW_COTTAGE = 'Добавить коттедж';
 export const ADD_NEW_COTTAGE_DESCRIPTION_KEYBOARD = 'Добавить описание';
 export const ADD_NEW_COTTAGE_PHOTOS_KEYBOARD = 'Добавить фото';
+export const ADD_NEW_COTTAGE_GUESTS_KEYBOARD = 'Добавить количество гостей';
 export const SELECT_AN_COTTAGE = 'Выбрать коттедж';
 export const ADD_ADMINISTRATOR = 'Добавить администратора';
 export const REMOVE_ADMINISTRATOR = 'Удалить администратора';

@@ -6,7 +6,7 @@ export type CottageDocument = Cottage & Document
 @Schema()
 export class Cottage {
   @Prop()
-  maxGuests: number;
+  guests: number;
 
   @Prop()
   description: string;

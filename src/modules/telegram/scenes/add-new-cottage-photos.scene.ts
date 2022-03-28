@@ -5,6 +5,8 @@ import { FilesService } from '../services/files.service';
 import * as path from 'path';
 import { ContextType } from '../types/context.type';
 import { BACK_TO_PREVIOUS_MENU } from '../constants/buttons';
+import { getMessageText } from '../utils/get-message-text';
+import { AddCottageState } from '../types/add-cottage-state';
 
 @Scene(ADD_NEW_COTTAGE_PHOTOS_SCENE)
 export class AddNewCottagePhotosScene {
@@ -25,8 +27,7 @@ export class AddNewCottagePhotosScene {
 
   @On('text')
   async onText(@Ctx() ctx: ContextType) {
-    // @ts-ignore
-    const text = ctx.message.text;
+    const text = getMessageText(ctx);
     if (text === BACK_TO_PREVIOUS_MENU) {
       ctx.scene.enter(ADD_NEW_COTTAGE_SCENE, { ...ctx.scene.state });
     }
@@ -43,9 +44,8 @@ export class AddNewCottagePhotosScene {
       || path.extname(fileUrl) === '.jpeg'
     ) {
       const fileName = path.basename(String(fileUrl));
-      this.fileService.downloadFile(String(fileUrl), 'photos', fileName);
-      // @ts-ignore
-      const { photos } = ctx.scene.state;
+      this.fileService.downloadFile(String(fileUrl), path.resolve(__dirname, 'photos', fileName));
+      const { photos } = ctx.scene.state as AddCottageState;
       if (photos) {
         ctx.scene.state = { ...ctx.scene.state, photos: [...photos, fileName] };
       } else {

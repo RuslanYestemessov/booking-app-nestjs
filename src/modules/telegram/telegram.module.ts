@@ -9,7 +9,7 @@ import { HttpModule } from '@nestjs/axios';
 import { FilesService } from './services/files.service';
 import { AuthorizationScene } from './scenes/authorization.scene';
 import { MainScene } from './scenes/main.scene';
-import { BookARoomScene } from './scenes/book-a-room.scene';
+import { SelectCottageScene } from './scenes/select-cottage.scene';
 import { AddNewCottagePhotosScene } from './scenes/add-new-cottage-photos.scene';
 import { AdministrationStartScene } from './scenes/administration-start.scene';
 import { EditAdministratorsScene } from './scenes/edit-administrators.scene';
@@ -19,11 +19,13 @@ import { AddNewAdministratorScene } from './scenes/add-new-administrator.scene';
 import { ViewBookedScene } from './scenes/view-booked.scene';
 import { AddNewCottageDescriptionScene } from './scenes/add-new-cottage-description.scene';
 import { RemoveAdministratorScene } from './scenes/remove-administrator.scene';
+import { SelectCottageByGuestsNumberScene } from './scenes/select-cottage-by-guests-number.scene';
+import { AddNewCottageMaxGuestsScene } from './scenes/add-new-cottage-max-guests.scene';
 
 const scenes = [
   AuthorizationScene,
   MainScene,
-  BookARoomScene,
+  SelectCottageScene,
   AddNewCottagePhotosScene,
   AdministrationStartScene,
   EditAdministratorsScene,
@@ -32,7 +34,9 @@ const scenes = [
   AddNewAdministratorScene,
   ViewBookedScene,
   AddNewCottageDescriptionScene,
-  RemoveAdministratorScene
+  RemoveAdministratorScene,
+  SelectCottageByGuestsNumberScene,
+  AddNewCottageMaxGuestsScene
 ];
 
 const services = [
